@@ -1,0 +1,82 @@
+:root {
+    --color-primary: #D24434;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-subtitle: #747474;
+    --color-separate:#E9E9E9;
+    --color-descricao:#ACACAC;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+html , body {
+    font-family: "Poppins";
+    overflow-x: hidden;
+    background-color: var(--color-white);
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    margin-left: 30px;
+    margin-right: 30px;
+    max-width: 90%;
+    margin: auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.icon {
+    max-width: 17px;
+    margin-right: 8px;
+}
+
+.btn {
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-red {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: 0px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.btn-cart {
+    background-color: var(--color-white);
+    border: 3px solid var(--color-separate);
+    border-radius: 50px;
+    width: 60%;
+    padding: 10px;
+    font-size: 1rem;
+    color: var(--color-black);
+}
+
+.btn-cart:hover {
+    background-color: var(--color-separate);
+}
+
+.titulo h1 {
+    font-size: 2.5rem;
+}
+
+.subtitulo {
+    color: var(--color-subtitle);
+    font-size: 1.2rem;
+    max-width: 50%;
+    margin: auto;
+}
+
