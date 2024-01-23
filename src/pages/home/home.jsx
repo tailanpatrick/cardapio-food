@@ -7,7 +7,7 @@ function Home () {
         <div className="container">
             <div className="titulo text-center">
                 <h1>Nosso Cardápio</h1>
-                <p className="subtitulo">Clique em adicionar para colocar os produtos na sacola de compras. Se preferir, você pode pedir pelo Whatsapp: (31) 98807-6912.</p>
+                <p className="subtitulo">Clique em adicionar para colocar os produtos na sacola de compras. Se preferir, você pode pedir pelo Whatsapp:<br/> <span className="txt-primary">(31) 98807-6912.</span></p>
             </div>
         </div>
         
