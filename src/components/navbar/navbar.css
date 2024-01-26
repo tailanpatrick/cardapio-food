@@ -21,12 +21,13 @@
     margin-right: 10%;
 }
 
-.menu a {
+.menu span {
     color: var(--color-black);
     margin-right: 25px;
+    cursor: pointer;
 }
 
-.menu a:hover {
+.menu span:hover {
     color: var(--color-primary);
 }
 

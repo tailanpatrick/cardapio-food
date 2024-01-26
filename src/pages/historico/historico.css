@@ -1,0 +1,5 @@
+.box-historico {
+    border: 1px solid var(--color-separate);
+    padding: 30px;
+    border-radius: 20px;
+}

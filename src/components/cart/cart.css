@@ -1,0 +1,37 @@
+.btn-sair-carrinho {
+    position: absolute;
+    top: 4.5%;
+    left: 10%;
+    display: none;
+}
+
+.btn-sair-carrinho img {
+    width: 30px;
+}
+
+.btn-sair-carrinho button {
+    border: none;
+    background: var(--color-white);
+}
+
+.lista-produtos {
+    height: calc(100% - 250px);
+    overflow: auto;
+}
+
+.footer-cart {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    margin-top: 20px;
+    border-top: 2px solid var(--color-border-footer-cart);
+}
+
+.footer-cart-valor {
+    margin-left: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
