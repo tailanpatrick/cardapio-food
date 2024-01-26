@@ -11,7 +11,7 @@ function Historico() {
         {id_pedido: 985852, dt: "19/01/2024", total: 78.80},
         {id_pedido: 998524, dt: "19/01/2024", total: 50.00}
     ];
-
+    console.log(pedidos);
     return <>
         <Navbar showMenu/>
         <div className="container">

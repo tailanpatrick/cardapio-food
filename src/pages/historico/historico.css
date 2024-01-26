@@ -1,3 +1,15 @@
+.table tr{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--color-separate);
+}  
+
+.table tr:last-child, 
+.table tr:last-child td {
+    border-bottom: none;
+}
+
 .box-historico {
     border: 1px solid var(--color-separate);
     padding: 30px;

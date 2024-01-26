@@ -100,4 +100,11 @@
         width: 100%;
     }
 
+    .table tr {
+        display: block;
+    }
+
+    .box-historico {
+        padding: 15px;
+    }
 }
