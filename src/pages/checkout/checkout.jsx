@@ -1,11 +1,63 @@
 import Navbar from "../../components/navbar/navbar.jsx";
 import "./checkout.css"
 import { CartContext } from "../../contexts/cart-context.jsx";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import api from '../../services/api.js'
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
 
-    const { totalCart } = useContext(CartContext);
+    const { totalCart, setTotalCart ,cartItems, setCartItems } = useContext(CartContext);
+
+    const navigate = useNavigate();
+
+    const [nome, setNome] = useState("");
+    const [telefone, setTelefone] = useState("");
+
+    const [cep, setCep] = useState("");
+    const [endereco, setEndereco] = useState("");
+    const [bairro, setBairro] = useState("");
+    const [cidade, setCidade] = useState("");
+    const [uf, setUf] = useState("");
+
+    function FinalizarPedido(){
+        
+        // monta os items
+        let produtos = [];
+        
+        for(let prod of cartItems){
+            produtos.push({
+                id_produto: prod.id,
+                qtd:prod.qtd,
+                vl_unitario: prod.preco,
+                vl_total: prod.preco * prod.qtd
+            })
+        }
+
+        const params = {
+            id_usuario: 1,
+            nome,
+            telefone,
+            endereco,
+            bairro,
+            cidade,
+            uf,
+            cep,
+            total:totalCart,
+            itens: produtos
+        }
+
+        api.post('/pedidos',params)
+        .then((resp) => {
+            setCartItems([]);
+            setTotalCart(0);
+            navigate('/historico');
+        })
+        .catch((err) => {
+            alert('Erro ao enviar pedido.')
+        })
+    }
+
 
     return <>
         <Navbar />
@@ -20,17 +72,13 @@ function Checkout() {
 
                     <div className="input-group">
                         <p>Nome Completo: </p>
-                        <input type="text" name="nome" id="nome" />
+                        <input type="text" name="nome" id="nome" onChange={(e) => setNome(e.target.value)} />
 
-                    </div>
-                    <div className="input-group">
-                        <p>CPF: </p>
-                        <input type="text" name="cpf" id="cpf" />
                     </div>
 
                     <div className="input-group">
                         <p>Telefone de Contato: </p>
-                        <input type="text" name="telefone" id="telefone" />
+                        <input type="text" name="telefone" id="telefone" onChange={(e) => { setTelefone(e.target.value) }} />
                     </div>
                 </div>
             </div>
@@ -41,27 +89,27 @@ function Checkout() {
 
                     <div className="input-group">
                         <p>CEP: </p>
-                        <input type="text" name="cep" id="cep" />
+                        <input type="text" name="cep" id="cep" onChange={(e) => { setCep(e.target.value) }} />
                     </div>
 
                     <div className="input-group">
                         <p>Endereço: </p>
-                        <input type="text" name="endereco" id="endereco" />
+                        <input type="text" name="endereco" id="endereco" onChange={(e) => { setEndereco(e.target.value) }} />
                     </div>
 
                     <div className="input-group">
                         <p>Bairro: </p>
-                        <input type="text" name="bairro" id="bairro" />
+                        <input type="text" name="bairro" id="bairro" onChange={(e) => { setBairro(e.target.value) }} />
                     </div>
 
                     <div className="input-group">
                         <p>Cidade: </p>
-                        <input type="text" name="cidade" id="cidade" />
+                        <input type="text" name="cidade" id="cidade" onChange={(e) => { setCidade(e.target.value) }} />
                     </div>
 
                     <div className="input-group">
                         <p>Estado: </p>
-                        <select id="uf" value={'MG'}>
+                        <select id="uf" value={'MG'} onChange={(e) => { setUf(e.target.value) }}>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -105,14 +153,14 @@ function Checkout() {
                         <span>
                             <strong>
                                 {new Intl.NumberFormat('pt-BR',
-                                { style: 'currency', currency: "BRL" }).format(totalCart)}
+                                    { style: 'currency', currency: "BRL" }).format(totalCart)}
                             </strong>
                         </span>
 
                     </div>
 
                     <div className="checkout-button">
-                        <button className="btn btn-red btn-checkout">Finalizar Pedido</button>
+                        <button onClick={FinalizarPedido}className="btn btn-red btn-checkout">Finalizar Pedido</button>
                     </div>
                 </div>
             </div>
