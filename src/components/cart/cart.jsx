@@ -29,7 +29,7 @@ function Cart() {
         position='right'
         isVisible={show}
         fluid={false}
-        size={450}
+        size={410}
 
         onVisibleChange={(visible) => {
             setShow(visible)
@@ -37,7 +37,7 @@ function Cart() {
     >
         
             <div className='btn-sair-carrinho'>
-                <button className='btn' onClick={() => {setShow(false)}}>
+                <button className='btn' onClick={() => setShow(false)}>
                     <img src={iconVoltar} alt="" />
                 </button>
             </div>
